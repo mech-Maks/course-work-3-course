@@ -1,0 +1,28 @@
+p {
+    margin: 0;
+}
+
+main {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.GET-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.GET-timer {
+    min-height: 20px;
+    min-width: 80px;
+    max-width: 200px;
+    margin: 20px auto;
+
+    border: 1px solid black;
+}
+
+.GET-amount-of-reqs {
+    width: 100px;
+    height: 20px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>client page</title>
+
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <script src="./build/build.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Курсач</h1>
+    </header>
+
+    <main>
+        <div class="GET-div">
+            <div class="GET-nodeJS-div">
+                <p>GET-запрос на NodeJS</p>
+                
+                <button id="GET-users-nodeJS">click</button>
+            </div>
+            
+            <div>
+                <p>Кол-во запросов</p>
+
+                <textarea class="GET-amount-of-reqs">1</textarea>
+            </div>
+
+            <div class="GET-PHP-div">
+                <p>GET-запрос на PHP</p>
+                
+                <button id="GET-users-PHP">click</button>
+            </div>
+        </div>
+
+        <div class="GET-timer">
+            <p>Запрос занял: <p class="GET-time-result"></p> </p>
+        </div>
+    </main>
+</body>
+</html>
