@@ -23,4 +23,4 @@ RESR-сервер PHP: localhost:4000
 Для выбора объем дата сета используется папка generator. В ней с помощью команды:
     node generator.js [amount_of_users]
 Составляется список пользователей (data/users.json) в размере amount_of_users(предельное значение - 300 000).
-Необходима папка big_data для корректной работы generator.js.
+Необходима папка big_data для корректной работы generator.js. 

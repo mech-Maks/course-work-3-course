@@ -107,6 +107,6 @@ function getAge(str) {
         JSON.stringify(users),
         (err) => {
             if (err) throw err;
-        })
+        });
 
 })();
