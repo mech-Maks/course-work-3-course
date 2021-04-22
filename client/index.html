@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="styles/styles.css">
 
-    <script src="./build/build.js" defer></script>
+    <script src="./build.js" defer></script>
 </head>
 <body>
     <header>
@@ -16,28 +16,160 @@
     </header>
 
     <main>
-        <div class="GET-div">
-            <div class="GET-nodeJS-div">
-                <p>GET-запрос на NodeJS</p>
+        <div class="api-users">
+            <div class="api-users-container">
+                <div class="api-users-nodeJS-div">
+                    <p>GET-запрос на NodeJS</p>
+                    
+                    <button id="api-users-nodeJS-btn">click</button>
+                </div>
                 
-                <button id="GET-users-nodeJS">click</button>
+                <div>
+                    <p>Кол-во запросов</p>
+    
+                    <textarea class="api-users-reqs">1</textarea>
+                </div>
+    
+                <div class="api-users-PHP-div">
+                    <p>GET-запрос на PHP</p>
+                    
+                    <button id="api-users-PHP-btn">click</button>
+                </div>
             </div>
-            
-            <div>
-                <p>Кол-во запросов</p>
+    
+            <table class="api-users-results">
+                <tr class="results-names">
+                    <td>Описание</td>
+                    <td>NodeJS</td>
+                    <td>PHP</td>
+                </tr>
 
-                <textarea class="GET-amount-of-reqs">1</textarea>
-            </div>
+                <tr class="results-values">
+                    <td>Чтение Файла на сервере</td>
+                    <td id="api-users-time-read-nodejs">0</td>
+                    <td id="api-users-time-read-php">0</td>
+                </tr>
 
-            <div class="GET-PHP-div">
-                <p>GET-запрос на PHP</p>
-                
-                <button id="GET-users-PHP">click</button>
-            </div>
+                <tr>
+                    <td>Передача данных на клиент</td>
+                    <td id="api-users-time-send-nodejs">0</td>
+                    <td id="api-users-time-send-php">0</td>
+                </tr>
+            </table>
         </div>
 
-        <div class="GET-timer">
-            <p>Запрос занял: <p class="GET-time-result"></p> </p>
+        <div class="sort-users">
+            <div class="sort-users-container">
+                <form action="http://localhost:8000/sort/users" class="sort-users-nodejs-form" method="POST">
+                    <div>
+                        <input type="radio" name="nodejs-sort-type" value="fullName" checked
+                        class="sort-users-input-nodejs" id="sort-nodejs-1">
+                        <label for="sort-nodejs-1">Сортировка по имени (лексикографическая)</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="nodejs-sort-type" value="age"
+                        class="sort-users-input-nodejs" id="sort-nodejs-2">
+                        <label for="sort-nodejs-2">Сортировка по возрасту (int переменные)</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="nodejs-sort-type" value="rate"
+                        class="sort-users-input-nodejs" id="sort-nodejs-3">
+                        <label for="sort-nodejs-3">Сортировка по рейтингу (float переменные)</label>
+                    </div>
+
+                    <button type="button" class="sort-users-nodejs-btn">Отправить</button>
+                </form>
+
+                <div>
+                    <p>Кол-во запросов</p>
+    
+                    <textarea class="sort-users-reqs">1</textarea>
+                </div>
+
+                <form action="http://localhost:4000/sort/users" class="sort-users-php-form" method="POST">
+                    <div>
+                        <input type="radio" name="php-sort-type" value="fullName" checked
+                        class="sort-users-input-php" id="sort-php-1">
+                        <label for="sort-php-1">Сортировка по имени (лексикографическая)</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="php-sort-type" value="age"
+                        class="sort-users-input-php" id="sort-php-2">
+                        <label for="sort-php-2">Сортировка по возрасту (int переменные)</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" name="php-sort-type" value="rate"
+                        class="sort-users-input-php" id="sort-php-3">
+                        <label for="sort-php-3">Сортировка по рейтингу (float переменные)</label>
+                    </div>
+
+                    <button type="button" class="sort-users-php-btn">Отправить</button>
+                </form>
+            </div>
+
+            <table class="sort-users-results">
+                <tr class="results-names">
+                    <td></td>
+                    <td>NodeJS</td>
+                    <td>PHP</td>
+                </tr>
+
+                <tr class="results-values-75k">
+                    <td>Выборка 75к</td>
+                    <td id="sort-users-time-nodejs-75k">0</td>
+                    <td id="sort-users-time-php-75k">0</td>
+                </tr>
+
+                <tr class="results-values-150k">
+                    <td>Выборка 150к</td>
+                    <td id="sort-users-time-nodejs-150k">0</td>
+                    <td id="sort-users-time-php-150k">0</td>
+                </tr>
+
+                <tr class="results-values-300k">
+                    <td>Выборка 300к</td>
+                    <td id="sort-users-time-nodejs-300k">0</td>
+                    <td id="sort-users-time-php-300k">0</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="bubble-sort-users">
+            <div class="bubble-container">
+                <button class="bubble-sort-users-nodejs-btn">Отправить JS</button>
+
+                <button class="bubble-sort-users-php-btn">Отправить PHP</button>
+            </div>
+
+            <table class="bubble-sort-users-results">
+                <tr class="results-names">
+                    <td></td>
+                    <td>NodeJS</td>
+                    <td>PHP</td>
+                </tr>
+
+                <tr class="results-values-4700">
+                    <td>Выборка 4700</td>
+                    <td id="bubble-sort-users-time-nodejs-4700">0</td>
+                    <td id="bubble-sort-users-time-php-4700">0</td>
+                </tr>
+
+                <tr class="results-values-9375">
+                    <td>Выборка 9375</td>
+                    <td id="bubble-sort-users-time-nodejs-9375">0</td>
+                    <td id="bubble-sort-users-time-php-9375">0</td>
+                </tr>
+
+                <tr class="results-values-18750">
+                    <td>Выборка 18750</td>
+                    <td id="bubble-sort-users-time-nodejs-18750">0</td>
+                    <td id="bubble-sort-users-time-php-18750">0</td>
+                </tr>
+            </table>
         </div>
     </main>
 </body>

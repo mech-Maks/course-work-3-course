@@ -59,6 +59,11 @@ function getAge(str) {
     return age;
 }
 
+// Условный рейтинг пользователя от 0 до 100
+function getRate() {
+    return Number((Math.random() * 100).toFixed(3));
+}
+
 (async function () {
     let names = await readSync('./big_data/names.json'),
         surnames = await readSync('./big_data/surnames.json'),
@@ -67,46 +72,49 @@ function getAge(str) {
         i = 0, j = 0,
         users_amount = 0,
         names_length,
+        name_index,
         found = 0,
         birth_date,
-        max_users = process.argv[2] || 5000;
+        max_users = process.argv[2] || 5000,
+        write_file = process.argv[3] || 'users.json';
 
     names = JSON.parse(names);
     surnames = JSON.parse(surnames);
+    max_users = Number(max_users);
 
     names_length = names.length;
 
     let users = [];
-
     surnames.forEach(surname => {
         if (users_amount >= max_users) return;
-        found = 0;
-        if (counter >= names_length) counter = 0;
-        i = counter;
 
-        while (found === 0) {
-            if (names[i].Sex === surname.Sex) {
-                birth_date = getRandomDate();
+        if (surname.Sex === 'М') name_index = getRandomInterval(23731, 51528);
+        else if (surname.Sex === 'Ж') name_index = getRandomInterval(0, 23730);
 
-                users.push({
-                    'fullName': surname.Surname + ' ' + names[i].Name,
-                    'sex': surname.Sex,
-                    'birth': birth_date,
-                    'age': getAge(birth_date)
-                });
-                found = 1;
-                counter = i + 1;
-                users_amount++;
-            }
-            i++;
-            if (i >= names_length) i = 0;
-        }
+        birth_date = getRandomDate();
+        users.push({
+            'fullName': surname.Surname + ' ' + names[name_index].Name,
+            'sex': surname.Sex,
+            'birth': birth_date,
+            'age': getAge(birth_date),
+            'rate': getRate()
+        });
+
+
+        users_amount++;
     });
 
-    fs.writeFile(path.join(__dirname, '../data', 'users.json'),
-        JSON.stringify(users),
-        (err) => {
-            if (err) throw err;
+
+    fs.mkdir(
+        path.join(__dirname, '../data'),
+        () => {
+            fs.writeFile(path.join(__dirname, '../data', write_file),
+                JSON.stringify(users),
+                (err) => {
+                    if (err) throw err;
+                });
         });
+
+    console.log('done: ', max_users);
 
 })();

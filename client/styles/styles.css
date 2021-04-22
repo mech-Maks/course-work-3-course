@@ -3,26 +3,58 @@ p {
 }
 
 main {
-    max-width: 680px;
+    max-width: 980px;
     margin: 0 auto;
 }
 
-.GET-div {
+.api-users-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.GET-timer {
-    min-height: 20px;
-    min-width: 80px;
-    max-width: 200px;
+.api-users-results {
+    border-collapse: collapse;
     margin: 20px auto;
+    width: 500px;   
+}
 
+.api-users-results td {
+    width: 30%;
     border: 1px solid black;
 }
 
-.GET-amount-of-reqs {
+.api-users-reqs {
     width: 100px;
     height: 20px;
+}
+
+main > div {
+    border: 1px solid black;
+    margin-bottom: 40px;
+    padding: 50px;
+}
+
+.sort-users-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sort-users-results,
+.bubble-sort-users-results {
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 500px;   
+}
+
+.sort-users-results td,
+.bubble-sort-users-results td {
+    width: 33%;
+    border: 1px solid black;
+}
+
+.bubble-container {
+    display: flex;
+    justify-content: space-between;
 }
