@@ -61,7 +61,7 @@ function getAge(str) {
 
 // Условный рейтинг пользователя от 0 до 100
 function getRate() {
-    return Number((Math.random() * 100).toFixed(3));
+    return Number((Math.random() * 100).toFixed(4));
 }
 
 (async function () {

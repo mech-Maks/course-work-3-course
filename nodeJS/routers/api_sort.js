@@ -34,17 +34,17 @@ module.exports = async function api_sort(req, res, body) {
     users_150 = await readSync(files[1]);
     users_300 = await readSync(files[2]);
 
-    time[0] = new Date().getTime();
+    time[0] = Date.now();
     users_75 = sort_arr(users_75, type);
-    time[0] = new Date().getTime() - time[0];
+    time[0] = Date.now() - time[0];
 
-    time[1] = new Date().getTime();
+    time[1] = Date.now();
     users_150 = sort_arr(users_150, type);
-    time[1] = new Date().getTime() - time[1];
+    time[1] = Date.now() - time[1];
 
-    time[2] = new Date().getTime();
+    time[2] = Date.now();
     users_300 = sort_arr(users_300, type);
-    time[2] = new Date().getTime() - time[2];
+    time[2] = Date.now() - time[2];
 
     res.end(JSON.stringify(time));
 }

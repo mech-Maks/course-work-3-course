@@ -5,8 +5,7 @@ const api_sort = require('./routers/api_sort.js');
 const api_bubble = require('./routers/api_bubble.js');
 
 const server = http.createServer((req, res) => {
-    let time = new Date().getTime(),
-        body = '';
+    let body = '';
 
     if (req.method === 'GET') {
         if (req.url.includes('?')) {
@@ -15,7 +14,7 @@ const server = http.createServer((req, res) => {
 
         if (req.url === '/') res.end();
 
-        if (req.url === '/api/users') api_users(req, res, time);
+        if (req.url === '/api/users') api_users(req, res);
 
         if (req.url === '/api/sort') api_sort(req, res, body);
 

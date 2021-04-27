@@ -33,19 +33,19 @@ module.exports = async function api_bubble(req, res) {
     users_9375 = await readSync(files[1]);
     users_18750 = await readSync(files[2]);
 
-    time[0] = new Date().getTime();
-    users_4700 = await sort_arr(users_4700);
-    time[0] = new Date().getTime() - time[0];
+    time[0] = Date.now();
+    sort_arr(users_4700);
+    time[0] = Date.now() - time[0];
 
-    time[1] = new Date().getTime();
-    users_9375 = sort_arr(users_9375);
-    time[1] = new Date().getTime() - time[1];
+    time[1] = Date.now();
+    sort_arr(users_9375);
+    time[1] = Date.now() - time[1];
 
-    time[2] = new Date().getTime();
-    users_18750 = sort_arr(users_18750);
-    time[2] = new Date().getTime() - time[2];
+    time[2] = Date.now();
+    sort_arr(users_18750);
+    time[2] = Date.now() - time[2];
 
-    // console.log(users_18750.slice(0, 5));
+    console.log(users_18750.slice(0, 5));
 
     res.end(JSON.stringify(time));
 }
@@ -57,15 +57,13 @@ function sort_arr(a) {
 
     for (i = 0; i < n; i++) {
         for (j = 0; j < n - 1; j++) {
-            if (a[j].age > a[j + 1].age) {
+            if (a[j].rate > a[j + 1].rate) {
                 copy_obj(a[j], temp);
                 copy_obj(a[j + 1], a[j]);
                 copy_obj(temp, a[j + 1]);
             }
         }
     }
-
-    return a;
 }
 
 function copy_obj(a, b) {

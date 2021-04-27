@@ -44,23 +44,27 @@ function start() {
         } else {
             let time_transportation = 0,
                 time_reading = 0,
+                time_writing = 0,
                 temp_1,
-                temp_2;
+                temp_2,
+                temp_3;
 
             for (let i = 0; i < apiUsersReqsAmount; i++) {
-                temp_1 = new Date().getTime();
+                temp_1 = Date.now();
 
                 await fetch('http://localhost:8000/api/users', {
                     method: 'GET'
                 })
                     .then(data => {
-                        temp_1 = new Date().getTime() - temp_1;
+                        temp_1 = Date.now() - temp_1;
                         return data.text();
                     })
                     .then(data => {
-                        temp_2 = Number(data.split('//')[0].split('=')[1]);
+                        temp_2 = Number(data.split('//')[0].split('=')[1].split('&')[0]);
+                        temp_3 = Number(data.split('//')[0].split('=')[1].split('&')[1]);
                         time_reading += temp_2;
-                        time_transportation += (temp_1 - temp_2);
+                        time_writing += temp_3;
+                        time_transportation += (temp_1 - temp_2 - temp_3);
                     })
                     .catch((e) => {
                         console.log(e);
@@ -69,6 +73,7 @@ function start() {
 
             document.getElementById('api-users-time-read-nodejs').innerHTML = `${time_reading} мс`;
             document.getElementById('api-users-time-send-nodejs').innerHTML = `${time_transportation} мс`;
+            document.getElementById('api-users-time-write-nodejs').innerHTML = `${time_writing} мс`;
         }
     })
 
@@ -79,23 +84,27 @@ function start() {
         } else {
             let time_transportation = 0,
                 time_reading = 0,
+                time_writing = 0,
                 temp_1,
-                temp_2;
+                temp_2,
+                temp_3;
 
             for (let i = 0; i < apiUsersReqsAmount; i++) {
-                temp_1 = new Date().getTime();
+                temp_1 = Date.now();
 
                 await fetch('http://localhost:4000/api/users', {
                     method: 'GET'
                 })
                     .then(data => {
-                        temp_1 = new Date().getTime() - temp_1;
+                        temp_1 = Date.now() - temp_1;
                         return data.text();
                     })
                     .then(data => {
-                        temp_2 = Number(data.split('//')[0].split('=')[1]);
+                        temp_2 = Number(data.split('//')[0].split('=')[1].split('&')[0]);
+                        temp_3 = Number(data.split('//')[0].split('=')[1].split('&')[1]);
                         time_reading += temp_2;
-                        time_transportation += (temp_1 - temp_2);
+                        time_writing += temp_3;
+                        time_transportation += (temp_1 - temp_2 - temp_3);
                     })
                     .catch((e) => {
                         console.log(e);
@@ -104,6 +113,7 @@ function start() {
 
             document.getElementById('api-users-time-read-php').innerHTML = `${time_reading} мс`;
             document.getElementById('api-users-time-send-php').innerHTML = `${time_transportation} мс`;
+            document.getElementById('api-users-time-write-php').innerHTML = `${time_writing} мс`;
         }
     })
 

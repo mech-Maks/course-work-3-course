@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="styles/styles.css">
 
-    <script src="./build/build.js" defer></script>
+    <script src="./build.js" defer></script>
 </head>
 <body>
     <header>
@@ -45,7 +45,7 @@
                 </tr>
 
                 <tr class="results-values">
-                    <td>Чтение Файла на сервере</td>
+                    <td>Чтение файла на сервере</td>
                     <td id="api-users-time-read-nodejs">0</td>
                     <td id="api-users-time-read-php">0</td>
                 </tr>
@@ -54,6 +54,12 @@
                     <td>Передача данных на клиент</td>
                     <td id="api-users-time-send-nodejs">0</td>
                     <td id="api-users-time-send-php">0</td>
+                </tr>
+
+                <tr>
+                    <td>Запись файла на сервере</td>
+                    <td id="api-users-time-write-nodejs">0</td>
+                    <td id="api-users-time-write-php">0</td>
                 </tr>
             </table>
         </div>

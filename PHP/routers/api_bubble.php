@@ -14,7 +14,7 @@ function bubble_sort(&$a) {
 
     for ($i=0; $i<$n; $i++) {
         for ($j=0; $j<$n-1; $j++) {
-            if ($a[$j]->age > $a[$j+1]->age) {
+            if ($a[$j]->rate > $a[$j+1]->rate) {
                 copy_obj($a[$j], $temp);
                 copy_obj($a[$j+1], $a[$j]);
                 copy_obj($temp, $a[$j+1]);
@@ -41,10 +41,9 @@ function api_bubble($method, $url, $params) {
     bubble_sort($users_9375);
     $time[1] = round(1000*(microtime(true) - $time[1]));
 
-    // $time[2] = microtime(true);
-    // bubble_sort($users_18750);
-    // $time[2] = round(1000*(microtime(true) - $time[2]));
-    // echo $time;
+    $time[2] = microtime(true);
+    bubble_sort($users_18750);
+    $time[2] = round(1000*(microtime(true) - $time[2]));
 
     print_r(json_encode($time));
 }
